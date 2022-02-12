@@ -1,37 +1,81 @@
 <template>
-  <div id="nav">
-     <b-button-group vertical>
-      <b-button><router-link to="/">Home</router-link></b-button>
-      <b-button><router-link to="/roller">Roller</router-link></b-button>
-      <b-button><router-link to="/alarm">Alarm</router-link></b-button>
-    </b-button-group>
+  <div id="app">
+    <div id="view" :class="[{'collapsed' : collapsed}]">
+      <router-view/>
+    </div>
+    <sidebar-menu
+      class="sidebar"
+      :menu="menu"
+      :collapsed="collapsed"
+      @item-click="onItemClick"
+      @update:collapsed="onToggleCollapse"
+    />
   </div>
-  <router-view/>
 </template>
 
+<script>
+import overviewIcon from './assets/overview.png'
+import alarmIcon from './assets/alarm.png'
+import rollerIcon from './assets/roller.png'
+
+export default {
+  name: 'App',
+  components: {
+  },
+  data() {
+      return {
+          menu: [
+              {
+                href: '/',
+                title: 'Home',
+                icon: {
+                  element: 'img',
+                  attributes: {
+                    src: overviewIcon
+                  }
+                }
+              },
+              {
+                href: '/roller',
+                title: 'Roller',
+                icon: {
+                  element: 'img',
+                  attributes: {
+                    src: rollerIcon
+                  }
+                }
+              },
+              {
+                href: '/alarm',
+                title: 'Alarm',
+                icon: {
+                  element: 'img',
+                  attributes: {
+                    src: alarmIcon
+                  }
+                }
+              }
+          ],
+          collapsed: true
+      };
+  },
+  methods: {
+    onItemClick(e, i) {
+      console.log("onItemClick", e, i);
+    },
+    onToggleCollapse(collapsed) {
+      console.log("onCollapse");
+      this.collapsed = collapsed;
+    }
+  }
+};
+</script>
+
 <style>
-body {margin:0}
-
-.nav {
-  width: 90px;
-  background-color: #303030;
+#view {
+  padding-left: 350px;
 }
-
-.nav {
-  display: block;
-  text-align: center;
-  padding: 15px;
-  transition: all 0.5s ease;
-  color: white;
-  font-size: 35px;
-}
-
-.nav li:hover {
-  background-color: #006346;
-}
-
-.nav li.router-link-active {
-  background-color: #008c62;
-  color: white;
+#view.collapsed {
+  padding-left: 70px;
 }
 </style>
