@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../components/Home.vue'
 import Alarm from '../components/Alarm.vue'
-import Roller from '../components/Roller.vue'
+import RollverOverview from '../components/roller/RollverOverview.vue'
 
 const routes = [
   {
@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/roller',
     name: 'Roller',
-    component: Roller
+    component: RollverOverview
   },
   {
     path: '/alarm',
