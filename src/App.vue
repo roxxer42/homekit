@@ -14,10 +14,6 @@
 </template>
 
 <script>
-import overviewIcon from './assets/overview.png'
-import alarmIcon from './assets/alarm.png'
-import rollerIcon from './assets/roller.png'
-
 export default {
   name: 'App',
   components: {
@@ -29,9 +25,9 @@ export default {
                 href: '/',
                 title: 'Home',
                 icon: {
-                  element: 'img',
+                  element: 'font-awesome-icon',
                   attributes: {
-                    src: overviewIcon
+                    'icon': 'align-justify'
                   }
                 }
               },
@@ -39,9 +35,9 @@ export default {
                 href: '/roller',
                 title: 'Roller',
                 icon: {
-                  element: 'img',
+                  element: 'font-awesome-icon',
                   attributes: {
-                    src: rollerIcon
+                    'icon': 'arrows-up-down'
                   }
                 }
               },
@@ -49,9 +45,9 @@ export default {
                 href: '/alarm',
                 title: 'Alarm',
                 icon: {
-                  element: 'img',
+                  element: 'font-awesome-icon',
                   attributes: {
-                    src: alarmIcon
+                    'icon': 'bell'
                   }
                 }
               }

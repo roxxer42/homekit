@@ -7,11 +7,12 @@
         </b-col>
       </b-row>
       <b-row>
+        
         <b-col class="roller-open">
-          Auf
+          <font-awesome-icon icon="angles-up" />
         </b-col>
         <b-col class="roller-close">
-          Zu
+          <font-awesome-icon icon="angles-down" />
         </b-col>
       </b-row>
     </b-container>
