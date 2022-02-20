@@ -5,7 +5,7 @@ import axios from 'axios'
 export const store = createStore({
     state: {
         rollers: [
-            { id: 1, name: 'Kitchen', ip: '1.1.1.1', type: 'Roller'},
+            { id: 1, name: 'Küche', ip: '1.1.1.1', type: 'Roller'},
         ],
         rollerState: []
     },
