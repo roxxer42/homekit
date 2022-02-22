@@ -2,7 +2,7 @@
   <div class="roller-overview">
     <h1>Roller overview: Total {{ rollerCount }}</h1>
     <div v-for='roller in rollers' :key="roller.id">
-      <roller :name="roller.name" :id="roller.id" />
+      <roller class="roller-overview" :name="roller.name" :id="roller.id" />
     </div>
   </div>  
 </template>
@@ -29,3 +29,8 @@ export default {
   },
 }
 </script>
+<style>
+.roller-overview {
+  margin-top: 10px;
+}
+</style>

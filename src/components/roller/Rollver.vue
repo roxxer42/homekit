@@ -3,15 +3,15 @@
     <div class="name">
       {{ name }}
     </div>
-    <div class="arrow-up">
+    <button class="arrow-up" v-on:click="anglesUp">
       <font-awesome-icon icon="angles-up" class="icon-up" />
-    </div> 
+    </button> 
     <div class="state">
       {{ state }}%
     </div>
-    <div class="arrow-down">
+    <button class="arrow-down" v-on:click="anglesDown">
       <font-awesome-icon icon="angles-down" />
-    </div> 
+    </button>
   </div>
 </template>
 
@@ -20,7 +20,8 @@ export default {
   name: 'Roller',
   data() {
     return {
-      state: 90
+      state: 90,
+      lastState: "STOP"
     }
   },
   props: {
@@ -28,6 +29,28 @@ export default {
     id: Number,
   },
   methods: {
+    anglesUp: function() {
+      if (this.lastState === "STOP") {
+        this.lastState = "UP";
+        this.$store.dispatch("openRoller", this.id)
+      } else {
+        this.stopRoller();
+        this.lastState = "STOP";
+      }
+    },
+    anglesDown: function() {
+      if (this.lastState === "STOP") {
+        this.lastState = "CLOSE"
+        this.$store.dispatch("closeRoller", this.id)
+      } else {
+        this.stopRoller();
+        this.lastState = "STOP";
+      }
+    },
+    stopRoller: function() {
+      console.log("STOP")
+      this.$store.dispatch("stopRoller", this.id)
+    },
     getRollerState: function() {
       this.$store.dispatch("getState", this.id)
     }
@@ -42,11 +65,15 @@ export default {
   border: 1px solid black;
   border-radius: 3px;
   font-size: 20px;
+  min-width: 225px;
+  max-width: 225px;
 }
 .name {
   float: left;
   margin: 5px 1px 5px 1px;
   padding: 5px 10px 5px 10px;
+  min-width: 75px;
+  max-width: 75px;
 }
 .arrow-up {
   float: left;

@@ -5,7 +5,7 @@ import axios from 'axios'
 export const store = createStore({
     state: {
         rollers: [
-            { id: 1, name: 'Küche', ip: '1.1.1.1', type: 'Roller'},
+            { id: 1, name: 'Work', ip: '1.1.1.1', type: 'Roller'}
         ],
         rollerState: []
     },
@@ -43,6 +43,15 @@ export const store = createStore({
                     id: id
                 })
             })
+        },
+        stopRoller({getters}, id) {
+            axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=stop')
+        },
+        openRoller({getters}, id) {
+            axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=open')
+        },
+        closeRoller({getters}, id) {
+            axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=close')
         }
     }
 })
