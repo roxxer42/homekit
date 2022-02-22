@@ -1,22 +1,17 @@
 <template>
   <div class="roller">
-    <b-container class="roller-container">
-      <b-row class="roller-header">
-        <b-col>
-          {{ name }} {{ state }}% offen
-        </b-col>
-      </b-row>
-      <b-row>
-        
-        <b-col class="roller-open">
-          <font-awesome-icon icon="angles-up" />
-        </b-col>
-        <b-col class="roller-close">
-          <font-awesome-icon icon="angles-down" />
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-button v-on:click="getRollerState">UPDATE</b-button>
+    <div class="name">
+      {{ name }}
+    </div>
+    <div class="arrow-up">
+      <font-awesome-icon icon="angles-up" class="icon-up" />
+    </div> 
+    <div class="state">
+      {{ state }}%
+    </div>
+    <div class="arrow-down">
+      <font-awesome-icon icon="angles-down" />
+    </div> 
   </div>
 </template>
 
@@ -41,15 +36,36 @@ export default {
 </script>
 
 <style>
-.roller-container {
-  border: 1px solid #000;
-  border-radius: 5px;
-  text-align: center;
+.roller {
+  float: left;
+  background-color: lightslategray;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 20px;
 }
-.roller-header {
-  border-bottom: 1px solid #000;
+.name {
+  float: left;
+  margin: 5px 1px 5px 1px;
+  padding: 5px 10px 5px 10px;
 }
-.roller-open {
-  border-right: 1px solid #000;
+.arrow-up {
+  float: left;
+  margin-right: 15px;
+  background-color: lightgrey;
+  margin: 5px 5px 5px 5px;
+  padding: 5px 8px 5px 8px;
+}
+.state {
+  float: left;
+  margin-right: 15px;
+  margin: 5px 1px 5px 1px;
+  padding: 5px 5px 5px 5px;
+}
+.arrow-down {
+  float: left;
+  margin-right: 15px;
+  background-color: lightgrey;
+  margin: 5px 5px 5px 5px;
+  padding: 5px 8px 5px 8px;
 }
 </style>
