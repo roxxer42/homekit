@@ -79,7 +79,6 @@ export default {
     },
     async pollRollerPosition() {
       this.polling = setInterval(() => {
-        console.log("POLLING NEW DATA")
         this.updateAndSetRollerState()
       }, 30000)
     }

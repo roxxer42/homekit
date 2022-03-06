@@ -54,6 +54,22 @@ export const store = createStore({
         },
         closeRollerById({getters}, id) {
             axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=close')
+        },
+        goToPosition({getters}, {id, position}) {
+            axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=to_pos&roller_pos=' + position)
+        }, 
+
+        setRollerToNotAtHome({getters, dispatch}) {
+            getters.getAllRollers.forEach(roller => dispatch("goToPosition", {
+                id: roller.id,
+                position: 20})
+            )
+        },
+        setRollerToAtHome({getters, dispatch}) {
+            getters.getAllRollers.forEach(roller => dispatch("goToPosition", {
+                id: roller.id,
+                position: 50})
+            )
         }
     }
 })

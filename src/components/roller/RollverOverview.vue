@@ -1,6 +1,5 @@
 <template>
   <div class="roller-overview">
-    <h1>Roller overview: Total {{ rollerCount }}</h1>
     <div v-for='roller in rollers' :key="roller.id">
       <roller class="roller-overview" :name="roller.name" :id="roller.id" />
     </div>
@@ -23,9 +22,6 @@ export default {
     rollers() {
       return this.$store.getters.getAllRollers;
     },
-    rollerCount() {
-      return this.$store.getters.getRollerCount;
-    }
   },
 }
 </script>

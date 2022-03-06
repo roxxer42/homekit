@@ -60,7 +60,6 @@ export default {
       console.log("onItemClick", e, i);
     },
     onToggleCollapse(collapsed) {
-      console.log("onCollapse");
       this.collapsed = collapsed;
     }
   }

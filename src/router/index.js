@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../components/Home.vue'
-import Alarm from '../components/Alarm.vue'
+import Home from '../components/home/Home.vue'
+import Alarm from '../components/alarm/Alarm.vue'
 import RollverOverview from '../components/roller/RollverOverview.vue'
 
 const routes = [
