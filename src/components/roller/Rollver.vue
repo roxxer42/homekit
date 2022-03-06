@@ -30,6 +30,7 @@ export default {
     id: Number,
   },
   async mounted() {
+    this.updateAndSetRollerState()
     this.pollRollerPosition()
   },
   beforeUnmount() {
