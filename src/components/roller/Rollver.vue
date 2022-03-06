@@ -38,7 +38,7 @@ export default {
     try {
       await this.getRollerState()
     } catch (ex) {
-      console.log("could not get data")
+      console.log("Could not update data. " + ex)
     } finally {
       this.getRollerPosition()
     }
@@ -52,7 +52,7 @@ export default {
     anglesUp: function() {
       if (this.lastState === "STOP") {
         this.lastState = "UP";
-        this.$store.dispatch("openRoller", this.id)
+        this.$store.dispatch("openRollerById", this.id)
       } else {
         this.stopRoller();
         this.lastState = "STOP";
@@ -61,20 +61,20 @@ export default {
     anglesDown: function() {
       if (this.lastState === "STOP") {
         this.lastState = "CLOSE"
-        this.$store.dispatch("closeRoller", this.id)
+        this.$store.dispatch("closeRollerById", this.id)
       } else {
         this.stopRoller();
         this.lastState = "STOP";
       }
     },
     stopRoller: function() {
-      this.$store.dispatch("stopRoller", this.id)
+      this.$store.dispatch("stopRollerById", this.id)
     },
     getRollerState: async function() {
-      await this.$store.dispatch("getState", this.id)
+      await this.$store.dispatch("updateRollerStateById", this.id)
     },
     getRollerPosition: function() {
-      this.state = this.$store.getters.getCurrentPosition(this.id);
+      this.state = this.$store.getters.getCurrentRollerPosition(this.id);
     }
   }
 }

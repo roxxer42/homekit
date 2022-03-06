@@ -21,20 +21,19 @@ export const store = createStore({
         getIpForRoller: (state) => (id) => {
             return state.rollers.find(roller => roller.id === id).ip
         },
-        getCurrentPosition: (state) => (id) => {
+        getCurrentRollerPosition: (state) => (id) => {
             return state.rollerState.find(roller => roller.id === id).data.current_pos;
         }
     },
 
     mutations: {
         SET_ROLLER_STATE(state, payload) {
-            console.log("update")
             state.rollerState.push(payload)
         }
     },
 
     actions: {
-        getState({commit, getters}, id ) {
+        updateRollerStateById({commit, getters}, id ) {
             return axios.get('http://'  + getters.getIpForRoller(id) + '/roller/0')
             .then(response => {
                 commit('SET_ROLLER_STATE', {
@@ -43,13 +42,13 @@ export const store = createStore({
                 })
             })
         },
-        stopRoller({getters}, id) {
+        stopRollerById({getters}, id) {
             axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=stop')
         },
-        openRoller({getters}, id) {
+        openRollerById({getters}, id) {
             axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=open')
         },
-        closeRoller({getters}, id) {
+        closeRollerById({getters}, id) {
             axios.get('http://' + getters.getIpForRoller(id) + '/roller/0?go=close')
         }
     }
