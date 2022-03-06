@@ -5,7 +5,8 @@ import axios from 'axios'
 export const store = createStore({
     state: {
         rollers: [
-            { id: 1, name: 'Work', ip: '1.1.1.1', type: 'Roller'}
+            { id: 3, name: 'Work', ip: '192.168.178.41', type: 'Roller'},
+            { id: 4, name: 'Balkon', ip: '192.168.178.40', type: 'Roller'}
         ],
         rollerState: []
     },
@@ -19,28 +20,26 @@ export const store = createStore({
         },
         getIpForRoller: (state) => (id) => {
             return state.rollers.find(roller => roller.id === id).ip
+        },
+        getCurrentPosition: (state) => (id) => {
+            return state.rollerState.find(roller => roller.id === id).data.current_pos;
         }
     },
 
     mutations: {
         SET_ROLLER_STATE(state, payload) {
-            state.rollerState = {
-                rollerId: payload.id,
-                rollerState: payload.data
-            }
+            console.log("update")
+            state.rollerState.push(payload)
         }
     },
 
     actions: {
         getState({commit, getters}, id ) {
-            axios.get('http://'  + getters.getIpForRoller(id) + '/roller/0',
-            { 
-                headers: {} 
-            })
+            return axios.get('http://'  + getters.getIpForRoller(id) + '/roller/0')
             .then(response => {
                 commit('SET_ROLLER_STATE', {
-                    data: response.data, 
-                    id: id
+                    id: id,
+                    data: response.data
                 })
             })
         },
