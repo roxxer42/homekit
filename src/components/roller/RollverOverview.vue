@@ -1,7 +1,7 @@
 <template>
-  <div class="roller-overview">
+  <div class="roller-overview-container">
     <div v-for='roller in rollers' :key="roller.id">
-      <roller class="roller-overview" :name="roller.name" :id="roller.id" />
+      <roller :name="roller.name" :id="roller.id" />
     </div>
   </div>  
 </template>
@@ -26,7 +26,8 @@ export default {
 }
 </script>
 <style>
-.roller-overview {
-  margin-top: 10px;
+.roller-overview-container {
+  display: flex;
+  flex-direction: column;
 }
 </style>

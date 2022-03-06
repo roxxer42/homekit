@@ -1,11 +1,11 @@
 <template>
-  <div class="closeAll">
-    <button class="btn-close-all" v-on:click="closeAll">
-      <p>Not at Home</p>     
-    </button>
-    <button class="btn-at-home" v-on:click="atHome">
-      <p>At Home</p>     
-    </button>
+  <div class="special-roller-container">
+      <button class="btn-close-all" v-on:click="closeAll">
+        <p>Not at Home</p>     
+      </button>
+      <button class="btn-at-home" v-on:click="atHome">
+        <p>At Home</p>     
+      </button>
   </div>
 </template>
 
@@ -26,20 +26,11 @@ export default {
 </script>
 
 <style>
-.closeAll {
-  float: left;
+.special-roller-container {
+  display: flex;
+  flex-direction: column;
 }
-.btn-close-all {
-  float: left;
-  background-color: lightslategray;
-  border: 1px solid black;
-  border-radius: 3px;
-  font-size: 20px;
-  min-width: 230px;
-  max-width: 230px;
-}
-.btn-at-home {
-  float: left;
+.btn-close-all, .btn-at-home {
   background-color: lightslategray;
   border: 1px solid black;
   border-radius: 3px;
@@ -47,5 +38,11 @@ export default {
   min-width: 230px;
   max-width: 230px;
   margin-top: 10px;
+}
+.btn-close-all {
+  order: 1;
+}
+.btn-at-home {
+  order: 2;
 }
 </style>
