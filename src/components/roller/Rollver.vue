@@ -13,12 +13,6 @@
       <font-awesome-icon icon="angles-down" />
     </button>
   </div>
-      <button  v-on:click="getRollerState">
-        <p>UPDATE STATE {{ name }}</p>
-      </button>
-      <button  v-on:click="getRollerPosition">
-        <p>GET POSITION {{ name }}</p>
-      </button>
 </template>
 
 <script>
@@ -26,8 +20,9 @@ export default {
   name: 'Roller',
   data() {
     return {
-      state: 100,
-      lastState: "STOP"
+      state: 50,
+      lastState: "STOP",
+      polling: null,
     }
   },
   props: {
@@ -35,13 +30,10 @@ export default {
     id: Number,
   },
   async mounted() {
-    try {
-      await this.getRollerState()
-    } catch (ex) {
-      console.log("Could not update data. " + ex)
-    } finally {
-      this.getRollerPosition()
-    }
+    this.pollRollerPosition()
+  },
+  beforeUnmount() {
+    clearInterval(this.polling)
   },
   computed: {
     positionState() {
@@ -75,6 +67,21 @@ export default {
     },
     getRollerPosition: function() {
       this.state = this.$store.getters.getCurrentRollerPosition(this.id);
+    },
+    updateAndSetRollerState: async function() {
+      try {
+        await this.getRollerState()
+      } catch (ex) {
+        console.log("Could not update data. " + ex)
+      } finally {
+        this.getRollerPosition()
+      }
+    },
+    async pollRollerPosition() {
+      this.polling = setInterval(() => {
+        console.log("POLLING NEW DATA")
+        this.updateAndSetRollerState()
+      }, 30000)
     }
   }
 }
@@ -106,7 +113,7 @@ export default {
 }
 .state {
   float: left;
-  margin-right: 15px;
+  margin-right: 10px;
   margin: 5px 1px 5px 1px;
   padding: 5px 5px 5px 5px;
 }
