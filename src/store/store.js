@@ -28,6 +28,10 @@ export const store = createStore({
 
     mutations: {
         SET_ROLLER_STATE(state, payload) {
+            var indexOfExistingElement = state.rollerState.findIndex(roller => roller.id === payload.id);
+            if (indexOfExistingElement !== -1) {
+                state.rollerState.splice(indexOfExistingElement, 1)
+            }
             state.rollerState.push(payload)
         }
     },
