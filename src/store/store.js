@@ -5,9 +5,11 @@ import axios from 'axios'
 export const store = createStore({
     state: {
         rollers: [
-            { id: 3, name: 'Work', ip: '192.168.178.41', type: 'Roller'},
-            { id: 4, name: 'Balkon', ip: '192.168.178.40', type: 'Roller'}
-        ],
+            { id: 1, name: 'Küche', ip: '192.168.178.44', type: 'Roller'},
+            { id: 2, name: 'Schlaf', ip: '192.168.178.42', type: 'Roller'},
+            { id: 3, name: 'Saal', ip: '192.168.178.41', type: 'Roller'},
+            { id: 4, name: 'Balkon', ip: '192.168.178.40', type: 'Roller'},
+            { id: 5, name: 'Klein', ip: '192.168.178.43', type: 'Roller'},        ],
         rollerState: []
     },
 
@@ -62,7 +64,7 @@ export const store = createStore({
         setRollerToNotAtHome({getters, dispatch}) {
             getters.getAllRollers.forEach(roller => dispatch("goToPosition", {
                 id: roller.id,
-                position: 20})
+                position: 95})
             )
         },
         setRollerToAtHome({getters, dispatch}) {

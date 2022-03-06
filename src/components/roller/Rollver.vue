@@ -71,7 +71,7 @@ export default {
     },
     updateAndSetRollerState: async function() {
       try {
-        //await this.getRollerState()
+        await this.getRollerState()
       } catch (ex) {
         console.log("Could not update data. " + ex)
       } finally {
