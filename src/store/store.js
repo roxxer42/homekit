@@ -5,11 +5,12 @@ import axios from 'axios'
 export const store = createStore({
     state: {
         rollers: [
-            { id: 1, name: 'Küche', ip: '192.168.178.44', type: 'Roller'},
-            { id: 2, name: 'Schlaf', ip: '192.168.178.42', type: 'Roller'},
-            { id: 3, name: 'Saal', ip: '192.168.178.41', type: 'Roller'},
-            { id: 4, name: 'Balkon', ip: '192.168.178.40', type: 'Roller'},
-            { id: 5, name: 'Klein', ip: '192.168.178.43', type: 'Roller'},        ],
+            { id: 1, name: 'Saal', ip: '192.168.178.41', type: 'Roller'},
+            { id: 2, name: 'Balkon', ip: '192.168.178.40', type: 'Roller'},
+            { id: 3, name: 'Schlaf', ip: '192.168.178.42', type: 'Roller'},
+            { id: 5, name: 'Klein', ip: '192.168.178.43', type: 'Roller'},
+            { id: 4, name: 'Küche', ip: '192.168.178.44', type: 'Roller'},
+        ],
         rollerState: []
     },
 
