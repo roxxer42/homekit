@@ -1,8 +1,6 @@
 <template>
   <div class="roller-overview-container">
-    <div v-for='roller in rollers' :key="roller.id">
-      <roller :name="roller.name" :id="roller.id" />
-    </div>
+      <roller class="roller-overview-item" v-for='roller in rollers' :key="roller.id" :name="roller.name" :id="roller.id" />
   </div>  
 </template>
 
@@ -28,6 +26,12 @@ export default {
 <style>
 .roller-overview-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.roller-overview-item {
+  width: 49%;
+  margin-top: 2%;
 }
 </style>

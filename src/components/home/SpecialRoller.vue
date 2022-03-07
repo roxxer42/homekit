@@ -34,7 +34,8 @@ export default {
   background-color: lightslategray;
   border: 1px solid black;
   border-radius: 3px;
-  font-size: 20px;
+  font-size: 25px;
+  height: 100px;
   min-width: 230px;
   max-width: 230px;
   margin-top: 10px;

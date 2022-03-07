@@ -91,35 +91,27 @@ export default {
 .roller-container {
   display: flex;
   flex-direction: row;
+  height: 100px;
   background-color: lightslategray;
   border: 1px solid black;
-  border-radius: 3px;
-  font-size: 20px;
-  min-width: 230px;
-  max-width: 230px;
-  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 25px;
 }
 .name {
-  margin: 5px 1px 5px 1px;
-  padding: 5px 10px 5px 10px;
-  min-width: 75px;
-  max-width: 75px;
+  flex-basis: 30%;
+  margin-left: 2%;
+  margin-top: 25px;
 }
-.arrow-up {
-  margin-right: 15px;
+.arrow-up, .arrow-down {
+  height: 100%;
   background-color: lightgrey;
-  margin: 5px 5px 5px 5px;
   padding: 5px 8px 5px 8px;
+  flex-basis: 30%;
 }
 .state {
-  margin-right: 10px;
-  margin: 5px 1px 5px 1px;
-  padding: 5px 5px 5px 5px;
-}
-.arrow-down {
-  margin-right: 15px;
-  background-color: lightgrey;
-  margin: 5px 5px 5px 5px;
-  padding: 5px 8px 5px 8px;
+  flex-basis: 15%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 25px;
 }
 </style>
