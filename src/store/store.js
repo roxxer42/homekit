@@ -64,7 +64,7 @@ export const store = createStore({
         setRollerToNotAtHome({getters, dispatch}) {
             getters.getAllRollers.forEach(roller => dispatch("goToPosition", {
                 id: roller.id,
-                position: 95})
+                position: 0})
             )
         },
         setRollerToAtHome({getters, dispatch}) {
